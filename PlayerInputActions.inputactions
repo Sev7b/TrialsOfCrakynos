@@ -28,6 +28,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Boating",
+            "id": "effa933f-7cef-442d-922d-ed02d7d2ffa3",
+            "actions": [
+                {
+                    "name": "Row",
+                    "type": "Button",
+                    "id": "a69bdee3-2186-4800-bcee-18d1edfc2c58",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7ad0d19e-35cc-41c0-85d6-7379e9436a8c",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Row",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
