@@ -5,7 +5,7 @@ using UnityEngine;
 public class Boat : MonoBehaviour
 {
     public int playerID = 0;
-
+    /*
     public void RowBoat()
     {
         if (gameStarted && Time.time - lastRowTime >= rowCooldown)
@@ -23,4 +23,5 @@ public class Boat : MonoBehaviour
             boatRigidbody.AddForce(Vector3.forward * forceToApply, ForceMode.Impulse);
         }
     }
+    */
 }
