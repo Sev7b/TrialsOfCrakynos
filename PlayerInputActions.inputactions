@@ -1,0 +1,34 @@
+{
+    "name": "PlayerInputActions",
+    "maps": [
+        {
+            "name": "Basic Player",
+            "id": "66f0b751-e6d4-4dd9-8394-f0c3cb080776",
+            "actions": [
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "07c24fd9-d742-4958-b76d-afe32d024a85",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "04d87f02-3387-4631-8bab-e38cac5cdf5d",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
