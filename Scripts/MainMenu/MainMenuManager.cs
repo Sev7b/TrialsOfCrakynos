@@ -3,18 +3,20 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Linq;
 using UnityEngine.UI;
+using System.Threading.Tasks;
 
 public class MainMenuManager : MonoBehaviour
 {
     public enum State
     {
         TITLE,
+        PLAYERS,
         TRIALS
     }
 
     [SerializeField] public State currentState;
 
-    [Header("Title")]
+    [Header("TITLE")]
     [Header("Settings")]
     [SerializeField] private Transform target;
     [SerializeField] private float height = 5f;
@@ -27,7 +29,13 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private AnimationClip textFall;
 
     [Space]
-    [Header("Trials")]
+    [Header("PLAYERS")]
+    [SerializeField] private Animation playerSlots;
+    [SerializeField] private AnimationClip slideIn;
+    [SerializeField] private AnimationClip slideOut;
+
+    [Space]
+    [Header("TRIALS")]
     [SerializeField] private Transform trialsPosition;
     [SerializeField] private float transitionSpeed = 1f; 
     private bool transitioningToTrials = false;
@@ -38,6 +46,7 @@ public class MainMenuManager : MonoBehaviour
         switch (currentState)
         {
             case State.TITLE:
+            case State.PLAYERS:
                 if (target)
                 {
                     OrbitAroundTarget();
@@ -52,7 +61,7 @@ public class MainMenuManager : MonoBehaviour
                 break;
         }
 
-        TransitionInput();
+        HandleStateTransitions();
     }
 
     void OrbitAroundTarget()
@@ -84,13 +93,21 @@ public class MainMenuManager : MonoBehaviour
         transitioningToTrials = false;
     }
 
-    void TransitionInput()
+    async void HandleStateTransitions()
     {
-        if (Keyboard.current.anyKey.wasPressedThisFrame || Gamepad.current?.allControls.Any(c => c.IsPressed()) == true && currentState == State.TITLE)
+        if ((Keyboard.current.anyKey.wasPressedThisFrame || Gamepad.current?.allControls.Any(c => c.IsPressed()) == true) && currentState == State.TITLE)
         {
-            currentState = State.TRIALS;
+            currentState = State.PLAYERS;
             title.Play(titleRise.name);
             startText.Play(textFall.name);
+
+            await Task.Delay(690);
+
+            playerSlots.Play(slideIn.name); 
         }
+
+        // Additional logic here for transitioning from PLAYERS to TRIALS
+        // This could be triggered by a specific input or other condition in your game
+        // Ensure that TransitionToTrials() is only called when the transition condition is met
     }
 }
