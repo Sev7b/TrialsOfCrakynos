@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 using System.Linq;
 using UnityEngine.UI;
 using System.Threading.Tasks;
+using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -36,6 +37,7 @@ public class MainMenuManager : MonoBehaviour
 
     [Space]
     [Header("TRIALS")]
+    [SerializeField] private Animation trials;
     [SerializeField] private Transform trialsPosition;
     [SerializeField] private float transitionSpeed = 1f; 
     private bool transitioningToTrials = false;
@@ -105,9 +107,18 @@ public class MainMenuManager : MonoBehaviour
 
             playerSlots.Play(slideIn.name); 
         }
+    }
 
-        // Additional logic here for transitioning from PLAYERS to TRIALS
-        // This could be triggered by a specific input or other condition in your game
-        // Ensure that TransitionToTrials() is only called when the transition condition is met
+    public void ToTrials()
+    {
+        currentState = State.TRIALS;
+        playerSlots.Play(slideOut.name);
+        TransitionToTrials();
+        trials.Play(slideIn.name);
+    }
+
+    public void StartTrial()
+    {
+        SceneManager.LoadScene("Boating");
     }
 }
