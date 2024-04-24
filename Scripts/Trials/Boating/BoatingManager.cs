@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BoatingManager : MonoBehaviour
 {
-    public static bool trialStarted = true;
+    public static bool trialStarted = false;
     private bool isInitialized = false;
 
     [Range(1, 4)]
